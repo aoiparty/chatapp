@@ -1,0 +1,49 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+<!--
+    {% comment %}
+
+    {% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+{#継承#}
+    {% for friends in friends_list %}
+
+    <ul>
+        <a href="{% url 'talk_room' friends.id %}" class="friends-list__link">
+            {#友達を押すと、友達のトーク画面へ#}
+            <div class="friends-list__username">{{ friend.username }}</div>
+        </a>
+        <li>{{friends.username}}</li>
+    {% endfor %}
+    <ul>
+{% endblock %}
+    {% endcomment %}
+
+
+-->
+
+
+
+{% block extra_style %}
+<link rel="stylesheet" href="{% static 'main/css/friends.css' %}">
+{% endblock %}
+
+{% block header_title %}友達{% endblock %}
+
+{% block content %}
+<div class="friends">
+    {# 友達のリスト表示部分 #}
+    <ul class="friends-list">
+        {% for friends in friends_list %}
+        <li class="friends-list__item">
+            <a href="{% url 'talk_room' friends.id %}" class="friends-list__link">
+                <div class="friends-list__username">{{ friends.username }}</div>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
